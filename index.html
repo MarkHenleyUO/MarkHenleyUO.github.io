@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+<head> 
+ 
+<title>Rproject.html.code</title>
+ 
+<meta charset="utf-8">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<style>
+body  { 
+  background-color: #C6CDCC;  
+  font-family: courier;
+  ;
+}
+ 
+ header {
+ 
+  background-color: gray;
+ 
+  padding: 30px;
+ 
+  text-align: center;
+ 
+  font-size: 35px;
+ 
+  color: white;
+}
+ 
+</style>
+ 
+</head>
+ 
+<body>
+ 
+ 
+<h1 style="font-size:50px;background-color:#33FFD1; color:black;"><b><strong>Correlation Test: Hurricane Frequency Related to Sea Surface Temperature Anomalies<strong><b></h1>
+ 
+ 
+ 
+<h2 style="font-size:40px;background-color:#35B4B6; color:black;"><i>Utilizing R to perform a correlation test on mean sea surface temperatures and hurricane frequency 1880-2015<i></h2>
+ 
+ 
+
+ 
+</style>
+ 
+</head>
+ 
+<body>
+ 
+ 
+<h4 id="TOC"></h4>  
+<h3 style="font-size:30px; text-align:center; background-color:#33FF64; color:black;id=toc_0"</h3>
+<h3 style="font-size:30px;text-align:center;"><b>Table of Contents<b></h3>
+ 
+ 
+ 
+
+<ol style= "margin-left:40%; margin-right:50%; width:50%;" color="#33FF64" type="I">
+<p><li><a href="#Intro">Jump to Introduction</a></p>
+ 
+<p><li><a href="#Corr">Jump to Correlation Testing</a></p>
+ 
+<p><li><a href="#Data">Jump to Data</a></p>
+ 
+<p><li><a href="#Anal">Jump to Analysis</a></p>
+ 
+<p><li><a href="#Conc">Jump to Conclusion</a></p>
+ 
+<p><li><a href="#Ref">Jump to References</a></p>
+
+
+  
+</ol> 
+<br> 
+<br>
+<br>
+<br> 
+<h4 id="Intro"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>Introduction</mark></h4>
+ 
+ 
+                <p style="text-align:left;">Before we can begin to examine the correlation between different variables related to hurricanes, we must first understand the science behind hurricanes and the severity categorization imposed upon them. Hurricanes are substantially large subtropical storms that develop over humid ocean waters before trekking towards land.<br>
+The threats from hurricanes are abundant; however, the most common come in the forms of powerful winds, heavy rain, storm surge, coastal and inland flooding, rip currents, isolated or numerous tornados, and landslides. Hurricanes can differ in size dramatically; however, the average size is typically around 300 miles in diameter.(NOAA)<br>
+To put this in perspective, the whole state of Ohio is only 220 miles wide; thus, an average size hurricane could dwarf major cities and many states.<br>
+<br>
+The wind is where hurricanes make their bread and butter, as well as earn their insignia of category strength based off the Saffir-Simpson Hurricane Wind Scale.<br>
+The Saffir-Simpson Hurricane Wind Scale categorizes hurricanes based off sustained wind speed using the scale- category 1: 74-95 mph (Very dangerous winds will produce some damage), category 2: 96-110 mph (Extremely dangerous winds will cause extensive damage), category 3: 111-129 mph (Devastating damage will occur), <br>
+category 4: 130-156 mph (Catastrophic damage will occur), and category 5: 157&lt; mph (Catastrophic damage will occur). With the high winds comes the rain and storm surge that often cause prolonged damage and potentially hazardous conditions for first responders addressing the aftermath of a hurricane.<br>
+<br>
+Many hurricanes bring inland flooding hundreds of miles from where the hurricane originally made landfall. This is because as the storms began to weaken over land they slow down, producing continued rising air and rain. The heavy rains often lead to flash floods and stranded motorist. <br>
+The inland flooding, rip currents, storm surge, landslides, and wind are all well-known with hurricanes and although dangerous, they can seem secondary when there is often one or more duplicitous loiters roaming amongst the dark backdropped clouds. The tornados that can spawn from the outlying clouds can be <br>
+devastating by themselves but mix in a state or section of the country already in a state-of-emergency and you have a recipe for catastrophic loss. According to (Veering Winds and Shears – McCaul 1991) “As tropical cyclones make landfall, storm forces begin to decay, and wind speeds near the land surface fall off more <br>
+quickly than wind speeds at higher altitudes due to friction at the ground level. This vertical gradient in wind forces, as well as extreme changes in wind direction.(McCaul) <br>
+<br>
+Because hurricanes form when the presence of a weather disturbance, such as a thunderstorm, pulls warm surface air from many directions with that of warm ocean <br>
+surface temperatures (NOAA), I began to hypothesize whether the fluctuations in surface temperatures of the ocean has produced an increase or decrease in hurricanes.</p>
+ 
+ 
+<b>Saffir-Simpson-Hurricane-Wind-Scale</b>
+ 
+<p>Source: https://www.factsjustforkids.com/images/saffir-simpson-hurriane-wind-scale.png </p>
+ 
+ 
+ 
+<img src="https://www.factsjustforkids.com/images/saffir-simpson-hurriane-wind-scale.png" alt="Saffir-Simpson Hurricane Wind Scale" width="300" height="200">
+ 
+ 
+<br>
+<br>
+
+ 
+<h4 id="Corr"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>Correlation Analysis</mark></h4>
+
+<p style="text-align:left;"> When we are interested in the relationships between variables, including projected relationships, performing a correlation analysis is an excellent way to observe the statistics behind the relationships. <br>
+Correlation analysis is a specific quantitative approach in statistics to calculate directional and strength of correlation between variables.<br>
+<br>
+We can observe the direction of the correlation through scatterplots, looking at the relative shaping and direction of the plot points figure. If we see positive linear correlation the plot points will be rising in conformity, following a track similar to ( / ).<br>
+However, if the plot points are showing structure, but the line is decreasing ( \ ), the correlation is negative.<br>
+If the plot points appear to show no structure, looking scattered about all over or more in a circular formation, we would assume neutral correlation with little to no systematic relationship.<br>
+<br>
+While we observe the direction of the correlation it is easy to assume or not assume a relationship based on the structure of the plot points; thus, we can for assumptions regarding the strength based on the shape or profile of the plot points.<br>
+If we observe the scatterplot and all the plot points form a straight line, we consider this a perfect correlation and the strongest when discussing strength of association. If we see the plot points tightly packed along a positive or negative fit line, similar to the lines discussed above regarding direction of the relationship, this is considered a strong correlation.<br>
+If the plot points are more widely dispersed and not hugging the fit line quite as tight but still in structured together profile, this is considered a week correlation. A circular arrangement of plot points would imply no correlation. <br>
+<br>
+When partaking in a correlation analysis, it is important to remember that correlation ≠ causation. It is important to take into account alternative variables that may be impacting your correlation, address them if possible, but at least be aware of them when concluding your results and making assumptions.<br>
+A great example used in many statistical books and articles is the relationship between a decrease in annual flu cases each year at the same time as an increase in ice cream sales. If you compared the data and ran a correlation analysis on the values, produced scatterplots or other visuals, it could be easy to come to the conclusion there is a relationship between eating ice cream and not getting the flu.<br>
+However, this is not the case and unfortunately eating ice cream does not lower your chance of getting the flu.Instead this relationship is because of an outside variable consisting of things like seasonal food preferences and flu season highs and lows. During the summer months we see a decrease in flu cases because it is not the peak time for the flu bug; while, we also see an increase in ice cream consumption because of warmer weather.<br>
+This is an example of data that is correlated but the correlation is not causation. <br>
+<br>
+After running a correlation test, we will also compute a correlation coefficient. A correlation coefficient is an index that is used to portray the direction and strength of the variable’s relationship. The correlation coefficient is between [-1, +1], with (+1) being a perfect positive correlation, (-1) being a perfect negative correlation, and (0) being a complete absence of correlation.<br>
+If the value falls between (-1, +1) then the correlation strength and direction are determined based on where the value falls on the scale.<br>
+<br>
+There are three types of correlations- Pearson, Spearman, and Kendall. Pearson is the most generally used index for correlation among two variables. Used for interval and ratio values with both variables coming from normally sampled distributions. Another factor that is looked at with Pearson is the covariation of variables, which is the degree that two variables co-vary.<br>
+If variables co-vary in similar manners, we consider this strong correlation, but if there no consistent co-variation it is considered a weak correlation.<br>
+<br>
+Because we are only utilizing Pearson's correlation during our correlation analysis into sea surface temperature anomalies and hurricane frequency, I am not going to go into any more details regarding the Spearman and Kendall correlation methods. However, if you are interested in the alternative methods you may find more information at the link below.<br>
+<p>
+
+
+
+
+<img style= "margin-left:25%; margin-right:25%; width:50%;height:auto" src="Pearson's.C.E.jpg" alt="Pearson's correlation mathematical expression" >
+<p style="font-size:15px;margin-left:25%; margin-right:25%; width:50%;">Pearson's correlation mathematical expression found at link <br>
+<a href="https://canvas.uoregon.edu/courses/134065/files/folder/Slides?preview=6926804" style="margin-left:25%; margin-right:25%; width:50%;" target="_blank">Pearson's Mathematical Expression</a>
+</p>
+ 
+
+
+<style>
+a:link, a:visited {
+  background-color: #35B69B;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a:hover, a:active {
+  background-color: #35B69B;
+}
+</style>
+</head>
+<body>
+
+
+<p style="text-align:center">Correlation analysis types and processes for R can be found at link:</p>
+<a href="https://www.statmethods.net/stats/correlations.html" target="_blank" style="margin-left:25%; margin-right:25%; width:50%;">Quick-R:</a>
+
+</body>
+
+<br>
+<br>
+<br>
+<br>
+ 
+<h4 id="Data"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>Data</mark></h4>
+<p>The data obtained and used for this analysis consisted of a two .xlsx files, one for hurricanes and one for sea surface temperature anomaly.<br>
+<br>
+The sea surface temperature data originated from NOAA and consist of the average sea surface temperature anomalies since 1880- in (°F). It is comprised of four variable columns: Year, Annual anomaly, Lower 95% confidence interval, and Upper 95% confidence interval. The data then has 137 rows of data, one for each year 1880-2015.<br>
+<br>
+The hurricane data I used was from ‘Maps of World’; where, I found four data tables 1852-1899,1900-1950,1952-1999, and 2003-Present. The missing dates in the table year lists is because not every year did the U.S. have a named hurricane or there was no data for that year. To construct the data table with all years 1852-present, I had to first transfer each table individually into excel and create a .csv spread sheet with all the U.S. based storms. The table consisted of 262 rows and five variable columns. The variable names are as follows: State name, Name, Saffir-Simpson Category, Date of closest approach, and Year.<br>
+<br>
+The next step with the data collection and preprocessing before being able to utilize the data in R, consisted of adding a new column name to sea surface temperature called ‘Group’. I then added a value to the Group column that was the five-year date range of each group; thus, adding an easy prior column for data analysis if we needed statistics based off the grouping of years. After completing both tables I ensured we had proper formatting and no blank cells. Because R can be picky at times with data tables and formatting it is important to ensure tables are formatted correctly.<br>
+</p>
+ 
+ 
+ <style>
+ a:link, a:visited {
+  background-color: #35B69B;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #35B69B;
+}
+</style>
+</head>
+<body>
+
+
+<p style= "text-align:center;"><em>Sea Surface Temperature Anomaly Data<em></p>
+<a href="https://www.epa.gov/climate-indicators/climate-change-indicators-sea-surface-temperature" style="margin-left:25%; margin-right:25%; width:50%;" target="_blank">Sea Surface Temp Data</a>
+
+<p style= "text-align:center;"><em>Hurricane Frequency Data<em></p>
+<a href="https://www.mapsofworld.com/hurricane/dates.html" style="margin-left:25%; margin-right:25%; width:50%;" target="_blank">Hurricane Data</a>
+
+
+<body>
+ 
+ 
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<h4 id="Anal"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>Analysis</mark></h4>
+<p> The analysis steps performed in R to complete the correlation test are shown below.<br>
+Load data into R or Rstudio<br>
+<img src="Code.jpg" width="1000" height="200">
+<br>
+<br>
+We can then load the packages all at once or as needed. If you load them all at the beginning some features will be masked from other variables, packages or data at times. In some analysis this could be an issue; however, the packages become masked in this example due to repeated tools and I never had any issues loading them at the start.<br>
+<br>
+<br>
+<img src="Code2.jpg" width="1000" height="200">
+<br>
+<br>
+Now we can begin to filter some of the dates down so that both table have equivalent year ranges.<br>
+<br>
+<br>
+<img src="Code3.jpg" width="1000" height="200">
+<br>
+<br>
+Next, we will join the tables together.<br>
+<br>
+<br>
+<img src="Code4.jpg" width="1000" height="200">
+<br>
+<br>
+We can now utilize a couple simple scatterplots to visualize our data.<br>
+<br>
+<br>
+<img src="Code5.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot1.jpg" width="500" height="500">
+<br>
+<br>
+Because there is so many points for all the hurricanes from 1880, along with seasonal sea surface temperature anomalies, we need to condense the the years into 5-year increments using ‘Group’ variable in Sea.temp.hurr data frame.<br>
+<br>
+<br>
+<img src="Code6.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="Code7.jpg" width="1000" height="200">
+<br>
+<br>
+Now we will take a look at the new data.frames on more scatterplots, including a 3D scatterplot.<br>
+<br>
+<br>
+<img src="Code8.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot2.jpg" width="500" height="500">
+<br>
+<br>
+<img src="scatterplot3.jpg" width="500" height="500">
+<br>
+<br>
+We can now create a new data frame for frequency of hurricanes and merge it with all our other combines data in the data frame ‘Combination’.<br>
+<br>
+<br>
+<img src="Code9.jpg" width="1000" height="200">
+<br>
+<br>
+With are new data frame ‘Analysis.data’ we have duplicate rows; thus, we will now create a new data frame and adjust for the duplicate rows.<br>
+<br>
+<br>
+<img src="Code10.jpg" width="1000" height="200">
+<br>
+<br>
+We can now use are analysis ready data to visualize the relationship again in a 3D scatterplot.<br>
+<br>
+<br>
+<img src="Code11.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot4.jpg" width="500" height="500">
+<br>
+<br>
+We can also change around variables to have a better understanding of the association amongst variables.<br>
+<br>
+<br>
+<img src="Code12.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot5.jpg" width="500" height="500">
+<br>
+<br>
+<img src="Code13.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot6.jpg" width="500" height="500">
+<br>
+<br>
+<img src="Code14.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot7.jpg" width="500" height="500">
+<br>
+<br>
+<img src="Code15.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot8.jpg" width="500" height="500">
+<br>
+<br>
+<img src="Code16.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot9.jpg" width="500" height="500">
+<br>
+<br>
+Now that we have been able to visualize the correlation data a little, we can now do a Shapiro-Wilk normality test.<br>
+<br>
+<br>
+<img src="Code17.jpg" width="1000" height="200">
+We can see that one variable is below the 0.5 p-value threshold; therefore, we can reject the null hypothesis and we some evidence the data is not normally distributed for Freq. The p-value for our temperature anomalies is however accepted and appears from a normal distribution.<br>
+<br>
+<br>
+Because this can sometimes not be the best judge of normality, especially when the variable was close to the 0.5 sensitivity, we will do Q-Q plots to check the data normality again.<br>
+<br>
+<br>
+<img src="Code18.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot10.jpg" width="500" height="500">
+<br>
+<br>
+<img src="scatterplot11.jpg" width="500" height="500">
+<br>
+<br>
+We can now assume that our variable data is from normal distributions and can therefore begin the correlation test.<br>
+<br>
+<br>
+<img src="Code19.jpg" width="1000" height="200">
+<br>
+<br>
+To interpret the correlation coefficient, we can use the following guide.<br>
+<br>
+<br>
+<img src="Code20.jpg" width="1000" height="200">
+<br>
+<br>
+We can now visualize the data for the last time to inspect the correlation. <br>
+<br>
+<br>
+<img src="Code21.jpg" width="1000" height="200">
+<br>
+<br>
+<img src="scatterplot12.jpg" width="500" height="500">
+<br>
+<br>
+<img src="scatterplot13.jpg" width="500" height="500">
+<br>
+<br>
+<img src="scatterplot14.jpg" width="500" height="500">
+</p>
+ 
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<h4 id="Conc"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>Conclusion</mark></h4>
+<p>Conclusion surrounding correlation test on hurricane frequency and ocean surface temps.</p>
+ 
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<h4 id="Ref"></h4>
+<h4 style="font-size:30px;text-align:center;"><mark>References</mark></h4>
+<p>References and citations.</p>
+ 
+<br>
+<br>
+<br>
+<br>
+<br>
+<ul style="list-style-type:none;margin-left:40%; margin-right:50%; width:50%;" ">
+<p><li><a href="#TOC">Jump to Table of Contents</a></p>
+</ul>
+ 
+ 
+ 
+ 
+ 
+<style>
+ 
+a:link, a:visited {
+ 
+  background-color: #35B69B;
+ 
+  color: white;
+ 
+  padding: 15px 25px;
+ 
+  text-align: center;
+ 
+  text-decoration: none;
+ 
+  display: inline-block;
+ 
+}
+ 
+ 
+ 
+a:hover, a:active {
+ 
+  background-color: #35B69B;
+ 
+}
+ 
+ 
+</body>
+ 
+</html>

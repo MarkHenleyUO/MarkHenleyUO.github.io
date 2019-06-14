@@ -1,0 +1,31 @@
+name: "Mark Henley"                             
+output_dir: "../public/Rproject"
+navbar:
+  title: "Final Project for R for Earth System Analysis"                      
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "About"
+      icon: fa-rss
+      href: about.html
+    - text: "Project Title"
+      icon: fa-rss
+      href: project.html 
+  right:
+    - text: "Contact me"
+      icon: fa-envelope-o
+      href: mailto:mhenley@uoregon.edu                  
+    - text: "GitHub"
+      icon: fa-github
+      href: https://github.com/MarkHenleyUO/Rproject     
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
