@@ -231,155 +231,156 @@ a:hover, a:active {
 <h4 style="font-size:30px;text-align:center;"><mark>Analysis</mark></h4>
 <p> The analysis steps performed in R to complete the correlation test are shown below.<br>
 Load data into R or Rstudio<br>
-<img src="Code.jpg" width="1000" height="200">
+<img src="Code.jpg" width="1000" height="200"><br>
 <br>
 <br>
 We can then load the packages all at once or as needed. If you load them all at the beginning some features will be masked from other variables, packages or data at times. In some analysis this could be an issue; however, the packages become masked in this example due to repeated tools and I never had any issues loading them at the start.<br>
 <br>
 <br>
-<img src="Code2.jpg" width="1000" height="200">
+<img src="Code2.jpg" width="1000" height="200"><br>
 <br>
 <br>
 Now we can begin to filter some of the dates down so that both table have equivalent year ranges.<br>
 <br>
 <br>
-<img src="Code3.jpg" width="1000" height="200">
+<img src="Code3.jpg" width="1000" height="200"><br>
 <br>
 <br>
 Next, we will join the tables together.<br>
 <br>
 <br>
-<img src="Code4.jpg" width="1000" height="200">
+<img src="Code4.jpg" width="1000" height="200"><br>
 <br>
 <br>
 We can now utilize a couple simple scatterplots to visualize our data.<br>
 <br>
 <br>
-<img src="Code5.jpg" width="1000" height="200">
+<img src="Code5.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot1.jpg" width="500" height="500">
+<img src="scatterplot1.jpg" width="500" height="500"><br>
 <br>
 <br>
 Because there is so many points for all the hurricanes from 1880, along with seasonal sea surface temperature anomalies, we need to condense the the years into 5-year increments using ‘Group’ variable in Sea.temp.hurr data frame.<br>
 <br>
 <br>
-<img src="Code6.jpg" width="1000" height="200">
+<img src="Code6.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="Code7.jpg" width="1000" height="200">
+<img src="Code7.jpg" width="1000" height="200"><br>
 <br>
 <br>
 Now we will take a look at the new data.frames on more scatterplots, including a 3D scatterplot.<br>
 <br>
 <br>
-<img src="Code8.jpg" width="1000" height="200">
+<img src="Code8.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot2.jpg" width="500" height="500">
+<img src="scatterplot2.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="scatterplot3.jpg" width="500" height="500">
+<img src="scatterplot3.jpg" width="500" height="500"><br>
 <br>
 <br>
 We can now create a new data frame for frequency of hurricanes and merge it with all our other combines data in the data frame ‘Combination’.<br>
 <br>
 <br>
-<img src="Code9.jpg" width="1000" height="200">
+<img src="Code9.jpg" width="1000" height="200"><br>
 <br>
 <br>
 With are new data frame ‘Analysis.data’ we have duplicate rows; thus, we will now create a new data frame and adjust for the duplicate rows.<br>
 <br>
 <br>
-<img src="Code10.jpg" width="1000" height="200">
+<img src="Code10.jpg" width="1000" height="200"><br>
 <br>
 <br>
 We can now use are analysis ready data to visualize the relationship again in a 3D scatterplot.<br>
 <br>
 <br>
-<img src="Code11.jpg" width="1000" height="200">
+<img src="Code11.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot4.jpg" width="500" height="500">
+<img src="scatterplot4.jpg" width="500" height="500"><br>
 <br>
 <br>
 We can also change around variables to have a better understanding of the association amongst variables.<br>
 <br>
 <br>
-<img src="Code12.jpg" width="1000" height="200">
+<img src="Code12.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot5.jpg" width="500" height="500">
+<img src="scatterplot5.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="Code13.jpg" width="1000" height="200">
+<img src="Code13.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot6.jpg" width="500" height="500">
+<img src="scatterplot6.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="Code14.jpg" width="1000" height="200">
+<img src="Code14.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot7.jpg" width="500" height="500">
+<img src="scatterplot7.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="Code15.jpg" width="1000" height="200">
+<img src="Code15.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot8.jpg" width="500" height="500">
+<img src="scatterplot8.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="Code16.jpg" width="1000" height="200">
+<img src="Code16.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot9.jpg" width="500" height="500">
+<img src="scatterplot9.jpg" width="500" height="500"><br>
 <br>
 <br>
 Now that we have been able to visualize the correlation data a little, we can now do a Shapiro-Wilk normality test.<br>
 <br>
 <br>
-<img src="Code17.jpg" width="1000" height="200">
+<img src="Code17.jpg" width="1000" height="200"><br>
+<br>
 We can see that one variable is below the 0.5 p-value threshold; therefore, we can reject the null hypothesis and we some evidence the data is not normally distributed for Freq. The p-value for our temperature anomalies is however accepted and appears from a normal distribution.<br>
 <br>
 <br>
 Because this can sometimes not be the best judge of normality, especially when the variable was close to the 0.5 sensitivity, we will do Q-Q plots to check the data normality again.<br>
 <br>
 <br>
-<img src="Code18.jpg" width="1000" height="200">
+<img src="Code18.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot10.jpg" width="500" height="500">
+<img src="scatterplot10.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="scatterplot11.jpg" width="500" height="500">
+<img src="scatterplot11.jpg" width="500" height="500"><br>
 <br>
 <br>
 We can now assume that our variable data is from normal distributions and can therefore begin the correlation test.<br>
 <br>
 <br>
-<img src="Code19.jpg" width="1000" height="200">
+<img src="Code19.jpg" width="1000" height="200"><br>
 <br>
 <br>
 To interpret the correlation coefficient, we can use the following guide.<br>
 <br>
 <br>
-<img src="Code20.jpg" width="1000" height="200">
+<img src="Code20.jpg" width="1000" height="200"><br>
 <br>
 <br>
 We can now visualize the data for the last time to inspect the correlation. <br>
 <br>
 <br>
-<img src="Code21.jpg" width="1000" height="200">
+<img src="Code21.jpg" width="1000" height="200"><br>
 <br>
 <br>
-<img src="scatterplot12.jpg" width="500" height="500">
+<img src="scatterplot12.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="scatterplot13.jpg" width="500" height="500">
+<img src="scatterplot13.jpg" width="500" height="500"><br>
 <br>
 <br>
-<img src="scatterplot14.jpg" width="500" height="500">
+<img src="scatterplot14.jpg" width="500" height="500"><br>
 </p>
  
 <br>
@@ -390,7 +391,18 @@ We can now visualize the data for the last time to inspect the correlation. <br>
  
 <h4 id="Conc"></h4>
 <h4 style="font-size:30px;text-align:center;"><mark>Conclusion</mark></h4>
-<p>Conclusion surrounding correlation test on hurricane frequency and ocean surface temps.</p>
+<p>We can see that by exploring the variables we obtain a better understanding of the data’s values, and association with other variables; which, allows us to better gain a grasp of how useful the data may be in the context of our research. Although, we could not see correlation when we were plotting multiple hurricane points for each year, we did however find that a reduction in hurricane values by averaging five-year limits for hurricanes improved our correlation. The proposed relationship between sea surface temperature anomalies and hurricane frequency began strong while exploring the data. In our first scatterplot we saw that there was a linear positive association between sea surface temperature anomaly and a yearly timeline progression, including when we grouped the year ranges.<br>
+<br> 
+The first 3d scatterplot I believe added useful visualization to this analysis, really allowing us to see how the anomaly values we negative for much of the century, but then began increasing in a linear manner. However, the second 3d plot was certainly easier to understand because of the reduced points due to grouping the storms by years. In interesting fashion though I noticed that in many of the plots related to hurricane frequency and anomalies, the correlation appeared to show a decrease in hurricane frequency when sea temperature anomalies are positive. This in my opinion was due to the high fluctuation in anomaly values prior to grouping them in 5-year increments.<br>
+<br>
+The Q-Q plots showed an excellent example of how some ways of checking data can provide different results than others. Originally, the data was not from normal distributions; however, as we combined year increments, we saw the distribution improve. However, the Shapiro-Wilk normality test still deemed one set of data as not normally distributed. When we utilized the second option of the Q-Q plots, we were able to see the data could be used; however, with little room for error regarding quantity of point used.<br> 
+<br>
+Our final calculation allowed us to derive a p-value of 0.3821151; thus, we can reject the null hypothesis. We can see that there is association and correlation between the sea surface temperature anomalies and hurricane frequency; however, the values in the anomaly data do not begin to show correlation until the hurricane frequency is grouped in increments and the anomaly values averaged.<br> 
+<br>
+In order to improve the analysis in the future I am going to utilizing all tropical depressions and above because I believe that much of the correlation between the two variable is minor in the grand scheme of the whole ocean and therefore the increase in sea temperature through the years is more likely causing or just correlating to tropical depressions, but not necessarily hurricane strength storms.<br>
+<br>
+
+</p>
  
 <br>
 <br>
